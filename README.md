@@ -1,6 +1,10 @@
-# Leetpick
+# LeetPick
 
-Leetpick is a small CLI that helps you work through the NeetCode 250 (Medium/Hard subset). It randomly suggests problems without repetition, lets you manually toggle completion, and tracks progress in a hidden `.state/` directory.
+LeetPick is a small CLI that helps you work through the NeetCode 250 (Medium/Hard subset). It randomly suggests problems without repetition, lets you manually toggle completion, and tracks progress in a hidden `.state/` directory.
+
+**Terminology:**  
+The **problem bank** is initialized with the full list of problems loaded from the dataset found at `/datasets/nc250_geMed.json`.
+Problems marked complete are removed from the problem bank until they are unmarked or until you run `reset`.
 
 ## Dataset
 The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry includes the canonical LeetCode `id`, `title`, `difficulty`, `topic`, and `link`. If you move the dataset elsewhere, pass `--dataset /absolute/path/to/file.json` when running commands.
@@ -21,10 +25,10 @@ The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry i
    ```
 
 ## Commands
-- `pick` – Suggests a random problem that is not marked complete.
-- `status` – Shows progress in the problem bank (`X/190 completed`).
-- `toggle <problem_id>` – Marks/unmarks a problem given its LeetCode ID.
-- `reset` – Unmarks everything as incomplete again.
+- `pick` – Pick a random incomplete problem
+- `status` – Show progress (e.g., `X/190 completed (X.X%)`)
+- `toggle <problem_id>` – Toggle problem completion given LeetCode problem number
+- `reset` – Unmarks completion for all problems so they can be picked again
 
 ### Example
 ```
@@ -34,7 +38,7 @@ https://leetcode.com/problems/minimum-height-trees/
 Use "toggle 310" to mark complete when done.
 
 $ python cli.py toggle 310
-Marked 310 as completed.
+Marked 310 as complete.
 
 $ python cli.py status
 1/190 completed (0.5%)

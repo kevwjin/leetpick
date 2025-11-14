@@ -14,7 +14,18 @@ DEFAULT_STATE = Path(".state") / "nc250_geMed_state.json"
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="LeetCode problem picker CLI")
+    parser = argparse.ArgumentParser(
+        description=(
+            "Randomly pick LeetCode problems from a problem bank "
+            "without repeating completed problems."
+        ),
+        epilog=(
+            "The problem bank is initialized with the full list of "
+            "problems loaded from the dataset. Problems marked complete are "
+            "removed from the problem bank until they are unmarked or "
+            "until you run `reset`."
+        )
+    )
     parser.add_argument(
         "--dataset",
         default=str(DEFAULT_DATASET),
@@ -32,15 +43,20 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     subparsers.add_parser(
-        "pick", help="Suggest the next problem from the problem bank")
+        "pick", help="Pick a random incomplete problem")
     subparsers.add_parser(
-        "status", help="Show progress in the problem bank")
+        "status", help="Show progress")
     toggle_parser = subparsers.add_parser(
-        "toggle", help="Toggle completion for a problem id")
+        "toggle", help="Toggle completion for a problem")
     toggle_parser.add_argument(
-        "problem_id", type=int, help="Problem id to toggle")
+        "problem_id", type=int, help="LeetCode problem number to toggle completion for")
     subparsers.add_parser(
-        "reset", help="Reset progress and refill the problem bank")
+        "reset",
+        help="Reset all progress",
+        description=(
+            "Unmark completion for all problems so they can be picked again."
+        )
+    )
     return parser
 
 
@@ -99,7 +115,7 @@ def cmd_toggle(args: argparse.Namespace) -> None:
 
     if problem_id in state["remaining"]:
         manager.mark_completed(state, problem_id)
-        print(f"Marked {problem_id} as completed.")
+        print(f"Marked {problem_id} as complete.")
     else:
         manager.unmark_completed(state, dataset.ids, problem_id)
         print(f"Moved {problem_id} back into the problem bank.")
