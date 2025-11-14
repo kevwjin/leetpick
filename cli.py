@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from __future__ import annotations
 
 import argparse
@@ -62,9 +63,10 @@ def cmd_pick(args: argparse.Namespace) -> None:
     problem_id = random.choice(remaining)
     record = dataset.index[problem_id]
 
+    # do not show topic when suggesting
     print(
         f'Suggested: [{record["difficulty"]}] '
-        f'{record["title"]} — {record["topic"]}'
+        f'{record["title"]}'  # — {record["topic"]}'
     )
     print(record["link"])
     print(f'Use "toggle {problem_id}" to mark complete when done.')
