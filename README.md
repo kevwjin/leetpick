@@ -3,7 +3,7 @@
 LeetPick is a small CLI that helps you work through the NeetCode 250 (Medium/Hard subset). It randomly suggests problems without repetition, lets you manually toggle completion, and tracks progress in a hidden `.state/` directory.
 
 **Terminology:**  
-The **problem bank** is initialized with the full list of problems loaded from the dataset found at `/datasets/nc250_geMed.json`.
+The **problem bank** is initialized with the full list of problems loaded from the dataset found at `datasets/nc250_geMed.json`.
 Problems marked complete are removed from the problem bank until they are unmarked or until you run `reset`.
 
 ## Dataset
