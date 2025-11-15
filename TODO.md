@@ -1,2 +1,3 @@
-adjust README and help comments to use better phrasing
+BACKLOG
+consider changing the ids property for the Dataset type
 create web intf, host on leetpick.kevwjin.com
