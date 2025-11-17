@@ -2,11 +2,16 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Iterable, List, TypedDict
+from typing import Dict, Iterable, List, TypedDict
+
+
+class Reminder(TypedDict):
+    due_date: float
 
 
 class State(TypedDict):
     remaining: List[int]
+    reminders: Dict[int, Reminder]
 
 
 class StateManager:
@@ -18,7 +23,7 @@ class StateManager:
         all_ids = list(dict.fromkeys(all_ids))  # preserve order and dedup
         valid_ids = set(all_ids)
         if not self.path.exists():
-            state: State = {"remaining": list(all_ids)}
+            state: State = {"remaining": list(all_ids), "reminders": {}}
             self.save(state)
             return state
 
@@ -30,10 +35,21 @@ class StateManager:
                 "Fix or delete it before continuing."
             ) from e
 
-        remaining = \
-            [id for id in raw.get("remaining", []) if id in valid_ids]
+        remaining: List[int] = []
+        for problem_id in raw.get("remaining", []):
+            if problem_id in valid_ids:
+                remaining.append(problem_id)
 
-        state: State = {"remaining": remaining}
+        reminders: Dict[int, Reminder] = {}
+        for problem_id, value in raw.get("reminders", {}).items():
+            if problem_id not in valid_ids:
+                continue
+            if isinstance(value, dict) and "due_date" in value:
+                reminders[problem_id] = {
+                    "due_date": float(value["due_date"])
+                }
+
+        state: State = {"remaining": remaining, "reminders": reminders}
         self.save(state)
         return state
 
@@ -41,7 +57,7 @@ class StateManager:
         self.path.write_text(json.dumps(state, indent=2))
 
     def reset(self, all_ids: Iterable[int]) -> State:
-        state: State = {"remaining": list(all_ids)}
+        state: State = {"remaining": list(all_ids), "reminders": {}}
         self.save(state)
         return state
 
@@ -50,7 +66,9 @@ class StateManager:
         if problem_id not in remaining:
             return state
         remaining = [id for id in remaining if id != problem_id]
-        updated: State = {"remaining": remaining}
+        reminders = state.get("reminders", {}).copy()
+        reminders.pop(problem_id, None)
+        updated: State = {"remaining": remaining, "reminders": reminders}
         self.save(updated)
         return updated
 
@@ -67,6 +85,17 @@ class StateManager:
 
         remaining_set.add(problem_id)
         ordered = [id for id in all_ids if id in remaining_set]
-        updated: State = {"remaining": ordered}
+        reminders = state.get("reminders", {}).copy()
+        reminders.pop(problem_id, None)
+        updated: State = {"remaining": ordered, "reminders": reminders}
+        self.save(updated)
+        return updated
+
+    def schedule_reminder(
+        self, state: State, problem_id: int, due_date: float
+    ) -> State:
+        reminders = state.get("reminders", {}).copy()
+        reminders[problem_id] = {"due_date": due_date}
+        updated: State = {"remaining": list(state["remaining"]), "reminders": reminders}
         self.save(updated)
         return updated
