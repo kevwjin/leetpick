@@ -41,7 +41,11 @@ class StateManager:
                 remaining.append(problem_id)
 
         reminders: Dict[int, Reminder] = {}
-        for problem_id, value in raw.get("reminders", {}).items():
+        for key, value in raw.get("reminders", {}).items():
+            try:
+                problem_id = int(key)
+            except (TypeError, ValueError):
+                continue
             if problem_id not in valid_ids:
                 continue
             if isinstance(value, dict) and "due_date" in value:
@@ -65,7 +69,7 @@ class StateManager:
         remaining: List[int] = list(state.get("remaining", []))
         if problem_id not in remaining:
             return state
-        remaining = [id for id in remaining if id != problem_id]
+        remaining = [id for id_ in remaining if id_ != problem_id]
         reminders = state.get("reminders", {}).copy()
         reminders.pop(problem_id, None)
         updated: State = {"remaining": remaining, "reminders": reminders}
@@ -84,7 +88,7 @@ class StateManager:
             return state
 
         remaining_set.add(problem_id)
-        ordered = [id for id in all_ids if id in remaining_set]
+        ordered = [id_ for id_ in all_ids if id in remaining_set]
         reminders = state.get("reminders", {}).copy()
         reminders.pop(problem_id, None)
         updated: State = {"remaining": ordered, "reminders": reminders}
