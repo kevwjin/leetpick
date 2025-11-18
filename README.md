@@ -21,6 +21,7 @@ The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry i
    python cli.py pick
    python cli.py status
    python cli.py toggle <problem_id>
+   python cli.py remind <problem_id> [--days 3]
    python cli.py reset
    ```
 
@@ -28,14 +29,22 @@ The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry i
 - `pick` – Pick a random incomplete problem
 - `status` – Show progress (e.g., `X/190 completed (X.X%)`)
 - `toggle <problem_id>` – Toggle problem completion given LeetCode problem number
+- `remind <problem_id> [--days N]` – Schedule a reminder to revisit a problem (default 3 days)
 - `reset` – Unmarks completion for all problems so they can be picked again
 
 ### Example
 ```
 $ python cli.py pick
-Suggested: [Medium] Minimum Height Trees — Graphs
-https://leetcode.com/problems/minimum-height-trees/
-Use "toggle 310" to mark complete when done.
+Reminder(s):
+ - [Hard] <problem-link>
+   Use "leetpick toggle <id>" to mark complete when done.
+
+Suggestion(s):
+ - [Medium] https://leetcode.com/problems/minimum-height-trees/
+   Use "leetpick toggle 310" to mark complete when done.
+
+$ python cli.py remind 310
+Reminder set for problem 310 in 3 day(s).
 
 $ python cli.py toggle 310
 Marked 310 as complete.
