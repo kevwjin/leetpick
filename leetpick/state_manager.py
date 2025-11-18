@@ -69,7 +69,7 @@ class StateManager:
         remaining: List[int] = list(state.get("remaining", []))
         if problem_id not in remaining:
             return state
-        remaining = [id for id_ in remaining if id_ != problem_id]
+        remaining = [id_ for id_ in remaining if id_ != problem_id]
         reminders = state.get("reminders", {}).copy()
         reminders.pop(problem_id, None)
         updated: State = {"remaining": remaining, "reminders": reminders}
@@ -88,7 +88,7 @@ class StateManager:
             return state
 
         remaining_set.add(problem_id)
-        ordered = [id_ for id_ in all_ids if id in remaining_set]
+        ordered = [id_ for id_ in all_ids if id_ in remaining_set]
         reminders = state.get("reminders", {}).copy()
         reminders.pop(problem_id, None)
         updated: State = {"remaining": ordered, "reminders": reminders}
