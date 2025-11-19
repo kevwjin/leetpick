@@ -18,7 +18,7 @@ The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry i
    ```
 3. Run commands:
    ```bash
-   python cli.py pick
+   python cli.py pick [--count N]
    python cli.py status
    python cli.py toggle <problem_id>
    python cli.py remind <problem_id> [--days 3]
@@ -26,7 +26,7 @@ The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry i
    ```
 
 ## Commands
-- `pick` – Pick a random incomplete problem
+- `pick [--count N]` – Pick one or more random incomplete problems
 - `status` – Show progress (e.g., `X/190 completed (X.X%)`)
 - `toggle <problem_id>` – Toggle problem completion given LeetCode problem number
 - `remind <problem_id> [--days N]` – Schedule a reminder to revisit a problem (default 3 days)
