@@ -44,8 +44,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    subparsers.add_parser(
-        "pick", help="Pick a random incomplete problem")
+    pick_parser = subparsers.add_parser(
+        "pick", help="Pick random incomplete problems")
+    pick_parser.add_argument(
+        "--count",
+        type=int,
+        default=1,
+        help="Number of suggestions to display (default: 1)",
+    )
     subparsers.add_parser(
         "status", help="Show progress")
 
@@ -112,11 +118,20 @@ def cmd_pick(args: argparse.Namespace) -> None:
             print(f" - [{record['difficulty']}] {record['link']}")
             print(f'   Use "leetpick toggle {id_}" to mark complete when done.')
 
-    suggestion_id = random.choice(remaining)
-    record = dataset.index[suggestion_id]
+    count = max(1, getattr(args, "count", 1))
+    if count > len(remaining):
+        count = len(remaining)
+
+    suggestions = random.sample(remaining, count)
     print("Suggestion(s):")
-    print(f" - [{record['difficulty']}] {record['link']}")
-    print(f'   Use "toggle {suggestion_id}" to mark complete when done.')
+    for idx, suggestion_id in enumerate(suggestions, 1):
+        record = dataset.index[suggestion_id]
+        print(
+            f" - [{record['difficulty']}] {record['link']}"
+        )
+        print(
+            f'   Use "toggle {suggestion_id}" to mark complete when done.'
+        )
 
 
 def cmd_status(args: argparse.Namespace) -> None:
