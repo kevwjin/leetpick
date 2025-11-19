@@ -184,6 +184,46 @@ def cmd_remind(args: argparse.Namespace) -> None:
         print(f"Problem id {problem_id} not found in this problem bank.")
         return
 
+    reminders = state.get("reminders", {})
+    if problem_id in reminders:
+        existing_due = datetime.fromtimestamp(reminders[problem_id]["due_date"])
+        resp = input(
+            "A reminder for this problem already exists (due {}).\n"
+            "Replace the existing reminder (y/N)? "
+            .format(existing_due.strftime("%Y-%m-%d"))
+        ).strip().lower()
+        while resp not in {"", "y", "yes", "n", "no"}:
+            resp = input("Enter y/N: ").strip().lower()
+        if resp not in {"y", "yes"}:
+            print("Reminder unchanged.")
+            return
+
+    def prompt_days(default: int = 3) -> int:
+        while True:
+            response = input(
+                "How many days until the reminder is due (default: 3)? ".format(default)
+            ).strip()
+            if not response:
+                return default
+            if response.isdigit():
+                return int(response)
+            print("Please enter a non-negative integer or press Enter for the default.")
+
+    if problem_id not in state["remaining"]:
+        response = input(
+            "This problem must be marked incomplete "
+            "(i.e., moved back into the problem bank) "
+            "before scheduling a reminder.\n"
+            "Mark the problem incomplete to schedule the reminder (y/N)? "
+        ).strip().lower()
+        while response not in {"", "y", "yes", "n", "no"}:
+            response = input("Enter y/N: ").strip().lower()
+        if response not in {"y", "yes"}:
+            print("Reminder canceled.")
+            return
+        state = manager.unmark_completed(state, dataset.ids, problem_id)
+        args.days = prompt_days()
+
     days = max(0, args.days)
     due_at = time.time() + timedelta(days=days).total_seconds()
     manager.schedule_reminder(state, problem_id, due_at)
