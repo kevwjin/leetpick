@@ -7,7 +7,7 @@ The **problem bank** is initialized with the full list of problems loaded from t
 Problems marked complete are removed from the problem bank until they are unmarked or until you run `reset`.
 
 ## Dataset
-The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry includes the canonical LeetCode `id`, `title`, `difficulty`, `topic`, and `link`. If you move the dataset elsewhere, pass `--dataset /absolute/path/to/file.json` when running commands.
+The CLI expects the curated dataset at `datasets/nc250_geMed.json`. Each entry includes the LeetCode **frontend** problem `id`, plus the `title`, `difficulty`, `topic`, and `link`. If you move the dataset elsewhere, pass `--dataset /absolute/path/to/file.json` when running commands.
 
 ## Quick start
 1. Ensure Python 3.10+ is available.

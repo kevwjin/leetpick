@@ -7,7 +7,7 @@
     "link": "https://leetcode.com/problems/group-anagrams/"
   },
   {
-    "id": 948,
+    "id": 912,
     "title": "Sort an Array",
     "difficulty": "Medium",
     "topic": "Arrays & Hashing",
@@ -126,7 +126,7 @@
     "link": "https://leetcode.com/problems/container-with-most-water/"
   },
   {
-    "id": 917,
+    "id": 881,
     "title": "Boats to Save People",
     "difficulty": "Medium",
     "topic": "Two Pointers",
@@ -217,14 +217,14 @@
     "link": "https://leetcode.com/problems/daily-temperatures/"
   },
   {
-    "id": 937,
+    "id": 901,
     "title": "Online Stock Span",
     "difficulty": "Medium",
     "topic": "Stack",
     "link": "https://leetcode.com/problems/online-stock-span/"
   },
   {
-    "id": 883,
+    "id": 853,
     "title": "Car Fleet",
     "difficulty": "Medium",
     "topic": "Stack",
@@ -245,7 +245,7 @@
     "link": "https://leetcode.com/problems/decode-string/"
   },
   {
-    "id": 931,
+    "id": 895,
     "title": "Maximum Frequency Stack",
     "difficulty": "Hard",
     "topic": "Stack",
@@ -266,14 +266,14 @@
     "link": "https://leetcode.com/problems/search-a-2d-matrix/"
   },
   {
-    "id": 907,
+    "id": 875,
     "title": "Koko Eating Bananas",
     "difficulty": "Medium",
     "topic": "Binary Search",
     "link": "https://leetcode.com/problems/koko-eating-bananas/"
   },
   {
-    "id": 1056,
+    "id": 1011,
     "title": "Capacity To Ship Packages Within D Days",
     "difficulty": "Medium",
     "topic": "Binary Search",
@@ -301,7 +301,7 @@
     "link": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/"
   },
   {
-    "id": 1023,
+    "id": 981,
     "title": "Time Based Key-Value Store",
     "difficulty": "Medium",
     "topic": "Binary Search",
@@ -322,7 +322,7 @@
     "link": "https://leetcode.com/problems/median-of-two-sorted-arrays/"
   },
   {
-    "id": 1185,
+    "id": 1095,
     "title": "Find in Mountain Array",
     "difficulty": "Hard",
     "topic": "Binary Search",
@@ -371,7 +371,7 @@
     "link": "https://leetcode.com/problems/reverse-linked-list-ii/"
   },
   {
-    "id": 860,
+    "id": 622,
     "title": "Design Circular Queue",
     "difficulty": "Medium",
     "topic": "Linked List",
@@ -413,7 +413,7 @@
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
   },
   {
-    "id": 784,
+    "id": 701,
     "title": "Insert into a Binary Search Tree",
     "difficulty": "Medium",
     "topic": "Linked List",
@@ -441,14 +441,14 @@
     "link": "https://leetcode.com/problems/binary-tree-right-side-view/"
   },
   {
-    "id": 772,
+    "id": 427,
     "title": "Construct Quad Tree",
     "difficulty": "Medium",
     "topic": "Linked List",
     "link": "https://leetcode.com/problems/construct-quad-tree/"
   },
   {
-    "id": 1544,
+    "id": 1448,
     "title": "Count Good Nodes in Binary Tree",
     "difficulty": "Medium",
     "topic": "Linked List",
@@ -483,7 +483,7 @@
     "link": "https://leetcode.com/problems/house-robber-iii/"
   },
   {
-    "id": 1450,
+    "id": 1325,
     "title": "Delete Leaves With a Given Value",
     "difficulty": "Medium",
     "topic": "Linked List",
@@ -504,7 +504,7 @@
     "link": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"
   },
   {
-    "id": 1014,
+    "id": 973,
     "title": "K Closest Points to Origin",
     "difficulty": "Medium",
     "topic": "Heap / Priority Queue",
@@ -532,28 +532,28 @@
     "link": "https://leetcode.com/problems/design-twitter/"
   },
   {
-    "id": 1962,
+    "id": 1834,
     "title": "Single-Threaded CPU",
     "difficulty": "Medium",
     "topic": "Heap / Priority Queue",
     "link": "https://leetcode.com/problems/single-threaded-cpu/"
   },
   {
-    "id": 778,
+    "id": 767,
     "title": "Reorganize String",
     "difficulty": "Medium",
     "topic": "Heap / Priority Queue",
     "link": "https://leetcode.com/problems/reorganize-string/"
   },
   {
-    "id": 1304,
+    "id": 1405,
     "title": "Longest Happy String",
     "difficulty": "Medium",
     "topic": "Heap / Priority Queue",
     "link": "https://leetcode.com/problems/longest-happy-string/"
   },
   {
-    "id": 1184,
+    "id": 1094,
     "title": "Car Pooling",
     "difficulty": "Medium",
     "topic": "Heap / Priority Queue",
@@ -700,7 +700,7 @@
     "link": "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
   },
   {
-    "id": 2755,
+    "id": 2707,
     "title": "Extra Characters in a String",
     "difficulty": "Medium",
     "topic": "Tries",
@@ -742,7 +742,7 @@
     "link": "https://leetcode.com/problems/walls-and-gates/"
   },
   {
-    "id": 1036,
+    "id": 994,
     "title": "Rotting Oranges",
     "difficulty": "Medium",
     "topic": "Graphs",
@@ -763,7 +763,7 @@
     "link": "https://leetcode.com/problems/surrounded-regions/"
   },
   {
-    "id": 753,
+    "id": 752,
     "title": "Open the Lock",
     "difficulty": "Medium",
     "topic": "Graphs",
@@ -791,7 +791,7 @@
     "link": "https://leetcode.com/problems/graph-valid-tree/"
   },
   {
-    "id": 1558,
+    "id": 1462,
     "title": "Course Schedule IV",
     "difficulty": "Medium",
     "topic": "Graphs",
@@ -840,14 +840,14 @@
     "link": "https://leetcode.com/problems/word-ladder/"
   },
   {
-    "id": 1753,
+    "id": 1631,
     "title": "Path With Minimum Effort",
     "difficulty": "Medium",
     "topic": "Advanced Graphs",
     "link": "https://leetcode.com/problems/path-with-minimum-effort/"
   },
   {
-    "id": 744,
+    "id": 743,
     "title": "Network Delay Time",
     "difficulty": "Medium",
     "topic": "Advanced Graphs",
@@ -861,14 +861,14 @@
     "link": "https://leetcode.com/problems/reconstruct-itinerary/"
   },
   {
-    "id": 1706,
+    "id": 1584,
     "title": "Min Cost to Connect All Points",
     "difficulty": "Medium",
     "topic": "Advanced Graphs",
     "link": "https://leetcode.com/problems/min-cost-to-connect-all-points/"
   },
   {
-    "id": 794,
+    "id": 778,
     "title": "Swim in Rising Water",
     "difficulty": "Hard",
     "topic": "Advanced Graphs",
@@ -882,28 +882,28 @@
     "link": "https://leetcode.com/problems/alien-dictionary/"
   },
   {
-    "id": 803,
+    "id": 787,
     "title": "Cheapest Flights Within K Stops",
     "difficulty": "Medium",
     "topic": "Advanced Graphs",
     "link": "https://leetcode.com/problems/cheapest-flights-within-k-stops/"
   },
   {
-    "id": 1613,
+    "id": 1489,
     "title": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
     "difficulty": "Hard",
     "topic": "Advanced Graphs",
     "link": "https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/"
   },
   {
-    "id": 2472,
+    "id": 2392,
     "title": "Build a Matrix With Conditions",
     "difficulty": "Hard",
     "topic": "Advanced Graphs",
     "link": "https://leetcode.com/problems/build-a-matrix-with-conditions/"
   },
   {
-    "id": 2827,
+    "id": 2709,
     "title": "Greatest Common Divisor Traversal",
     "difficulty": "Hard",
     "topic": "Advanced Graphs",
@@ -1001,7 +1001,7 @@
     "link": "https://leetcode.com/problems/integer-break/"
   },
   {
-    "id": 1522,
+    "id": 1406,
     "title": "Stone Game III",
     "difficulty": "Hard",
     "topic": "1-D Dynamic Programming",
@@ -1029,14 +1029,14 @@
     "link": "https://leetcode.com/problems/minimum-path-sum/"
   },
   {
-    "id": 1250,
+    "id": 1143,
     "title": "Longest Common Subsequence",
     "difficulty": "Medium",
     "topic": "2-D Dynamic Programming",
     "link": "https://leetcode.com/problems/longest-common-subsequence/"
   },
   {
-    "id": 1130,
+    "id": 1049,
     "title": "Last Stone Weight II",
     "difficulty": "Medium",
     "topic": "2-D Dynamic Programming",
@@ -1071,14 +1071,14 @@
     "link": "https://leetcode.com/problems/interleaving-string/"
   },
   {
-    "id": 909,
+    "id": 877,
     "title": "Stone Game",
     "difficulty": "Medium",
     "topic": "2-D Dynamic Programming",
     "link": "https://leetcode.com/problems/stone-game/"
   },
   {
-    "id": 1240,
+    "id": 1140,
     "title": "Stone Game II",
     "difficulty": "Medium",
     "topic": "2-D Dynamic Programming",
@@ -1127,14 +1127,14 @@
     "link": "https://leetcode.com/problems/maximum-subarray/"
   },
   {
-    "id": 954,
+    "id": 918,
     "title": "Maximum Sum Circular Subarray",
     "difficulty": "Medium",
     "topic": "Greedy",
     "link": "https://leetcode.com/problems/maximum-sum-circular-subarray/"
   },
   {
-    "id": 1020,
+    "id": 978,
     "title": "Longest Turbulent Subarray",
     "difficulty": "Medium",
     "topic": "Greedy",
@@ -1155,7 +1155,7 @@
     "link": "https://leetcode.com/problems/jump-game-ii/"
   },
   {
-    "id": 2001,
+    "id": 1871,
     "title": "Jump Game VII",
     "difficulty": "Medium",
     "topic": "Greedy",
@@ -1169,7 +1169,7 @@
     "link": "https://leetcode.com/problems/gas-station/"
   },
   {
-    "id": 876,
+    "id": 846,
     "title": "Hand of Straights",
     "difficulty": "Medium",
     "topic": "Greedy",
@@ -1183,14 +1183,14 @@
     "link": "https://leetcode.com/problems/dota2-senate/"
   },
   {
-    "id": 2026,
+    "id": 1899,
     "title": "Merge Triplets to Form Target Triplet",
     "difficulty": "Medium",
     "topic": "Greedy",
     "link": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/"
   },
   {
-    "id": 768,
+    "id": 763,
     "title": "Partition Labels",
     "difficulty": "Medium",
     "topic": "Greedy",
@@ -1239,21 +1239,21 @@
     "link": "https://leetcode.com/problems/meeting-rooms-ii/"
   },
   {
-    "id": 2479,
+    "id": 2402,
     "title": "Meeting Rooms III",
     "difficulty": "Hard",
     "topic": "Intervals",
     "link": "https://leetcode.com/problems/meeting-rooms-iii/"
   },
   {
-    "id": 1977,
+    "id": 1851,
     "title": "Minimum Interval to Include Each Query",
     "difficulty": "Hard",
     "topic": "Intervals",
     "link": "https://leetcode.com/problems/minimum-interval-to-include-each-query/"
   },
   {
-    "id": 2903,
+    "id": 2807,
     "title": "Insert Greatest Common Divisors in Linked List",
     "difficulty": "Medium",
     "topic": "Math & Geometry",
@@ -1295,7 +1295,7 @@
     "link": "https://leetcode.com/problems/multiply-strings/"
   },
   {
-    "id": 2139,
+    "id": 2013,
     "title": "Detect Squares",
     "difficulty": "Medium",
     "topic": "Math & Geometry",
@@ -1323,7 +1323,7 @@
     "link": "https://leetcode.com/problems/bitwise-and-of-numbers-range/"
   },
   {
-    "id": 3394,
+    "id": 3133,
     "title": "Minimum Array End",
     "difficulty": "Medium",
     "topic": "Bit Manipulation",
