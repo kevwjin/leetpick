@@ -73,6 +73,14 @@ def build_parser() -> argparse.ArgumentParser:
         default=3,
         help="Days until the reminder is due (default: 3)",
     )
+    list_parser = subparsers.add_parser(
+        "list", help="List completed problems or reminders"
+    )
+    list_parser.add_argument(
+        "category",
+        choices=["completed", "reminders"],
+        help="Which list to show",
+    )
 
     subparsers.add_parser(
         "reset",
@@ -115,8 +123,7 @@ def cmd_pick(args: argparse.Namespace) -> None:
             record = dataset.index.get(id_)
             if not record:
                 continue
-            print(f" - [{record['difficulty']}] {record['link']}")
-            print(f'   Use "leetpick toggle {id_}" to mark complete when done.')
+            print(f" - {id_} [{record['difficulty']}] {record['link']}")
 
     count = max(1, getattr(args, "count", 1))
     if count > len(remaining):
@@ -124,13 +131,14 @@ def cmd_pick(args: argparse.Namespace) -> None:
 
     suggestions = random.sample(remaining, count)
     print("Suggestion(s):")
-    for idx, suggestion_id in enumerate(suggestions, 1):
+    for suggestion_id in suggestions:
         record = dataset.index[suggestion_id]
         print(
             f" - [{record['difficulty']}] {record['link']}"
         )
         print(
-            f'   Use "toggle {suggestion_id}" to mark complete when done.'
+            f"   Use `leetpick toggle {suggestion_id}` "
+            "to mark complete when done."
         )
 
 
@@ -179,7 +187,46 @@ def cmd_remind(args: argparse.Namespace) -> None:
     days = max(0, args.days)
     due_at = time.time() + timedelta(days=days).total_seconds()
     manager.schedule_reminder(state, problem_id, due_at)
-    print(f"Reminder set for problem {problem_id} in {days} day(s)).")
+    due_str = datetime.fromtimestamp(due_at).strftime("%Y-%m-%d")
+    print(
+        f"Reminder set for problem {problem_id} on {due_str} "
+        f"(in {days} day(s))."
+    )
+
+
+def cmd_list(args: argparse.Namespace) -> None:
+    dataset, manager = load_context(args)
+    state = manager.load(dataset.ids)
+    category = args.category
+
+    if category == "completed":
+        remaining = set(state.get("remaining", []))
+        completed_ids = [id_ for id_ in dataset.ids if id_ not in remaining]
+        if not completed_ids:
+            print(f"{len(completed_ids)} completed problem(s)")
+            return
+        print(f"{len(completed_ids)} completed problem(s):")
+        for id_ in completed_ids:
+            record = dataset.index[id_]
+            print(f" - {id_}. [{record['difficulty']}] {record['link']}")
+    elif category == "reminders":
+        reminders = state.get("reminders", {})
+        items = sorted(reminders.items(), key=lambda kv: kv[1]["due_date"])
+        if not items:
+            print(f"{len(items)} reminder(s)")
+            return
+        print(f"{len(items)} reminder(s):")
+        for id_, info in items:
+            record = dataset.index.get(id_)
+            if not record:
+                continue
+            due_str = datetime.fromtimestamp(info["due_date"]).strftime(
+                "%Y-%m-%d"
+            )
+            print(
+                f" - {id_}. [{record['difficulty']}] {record['link']} "
+                f"(due {due_str})"
+            )
 
 
 def main(argv: List[str] | None = None) -> None:
@@ -195,6 +242,8 @@ def main(argv: List[str] | None = None) -> None:
             cmd_toggle(args)
         case "remind":
             cmd_remind(args)
+        case "list":
+            cmd_list(args)
         case "reset":
             cmd_reset(args)
         case _:
