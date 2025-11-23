@@ -118,19 +118,20 @@ def cmd_pick(args: argparse.Namespace) -> None:
             due_ids.append(id_)
     due_ids.sort(key=lambda id_: reminders[id_]["due_date"])
     if due_ids:
-        print("Reminder(s):")
+        print("Due reminder(s):")
         for id_ in due_ids:
             record = dataset.index.get(id_)
             if not record:
                 continue
             print(f" - {id_} [{record['difficulty']}] {record['link']}")
+    print()
 
     count = max(1, getattr(args, "count", 1))
     if count > len(remaining):
         count = len(remaining)
 
     suggestions = random.sample(remaining, count)
-    print("Suggestion(s):")
+    print("Picked problem(s):")
     for suggestion_id in suggestions:
         record = dataset.index[suggestion_id]
         print(
@@ -255,7 +256,24 @@ def cmd_list(args: argparse.Namespace) -> None:
         if not items:
             print(f"{len(items)} reminder(s)")
             return
-        print(f"{len(items)} reminder(s):")
+
+        def _get_due_reminders(reminders):
+            due_reminders = []
+            today = datetime.now().date()
+            id_, info = items[0]
+            info_day = datetime.fromtimestamp(info["due_date"]).date()
+            i = 0
+            while info_day <= today:
+                record = dataset.index.get(id_)
+                due_reminders.append(record)
+                i += 1
+            return due_reminders
+
+
+        for id_, info in items:
+            if info["due_date"] == 
+        print(f"Due reminder(s) ({len(items)}:")
+        print(f"Scheduled reminder(s) ({len(items)}):")
         for id_, info in items:
             record = dataset.index.get(id_)
             if not record:
